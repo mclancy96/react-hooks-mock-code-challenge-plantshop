@@ -10,7 +10,7 @@ function PlantList({ plants, setPlants }) {
   return (
     <ul className="cards">
       {plants.map((plant) => {
-        return <PlantCard plant={plant} setPlants={setPlants} />;
+        return <PlantCard plant={plant} setPlants={setPlants} key={plant.id} />;
       })}
     </ul>
   );

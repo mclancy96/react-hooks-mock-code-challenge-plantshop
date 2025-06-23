@@ -41,6 +41,12 @@
       "name": "Fiddle Leaf Fig",
       "image": "./images/fiddle-leaf-fig.jpg",
       "price": 55
+    },
+    {
+      "name": "ear",
+      "image": "https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fads-img.mozilla.org%2Fv1%2Fimages%3Fimage_data%3DCkYKRGh0dHBzOi8vcy56a2Nkbi5uZXQvQWR2ZXJ0aXNlcnMvOGQ5ZjZkM2ZkZTA4NDVjMDgyNDI3NGE5ZmVhYjcwMTEucG5nEiAyyfGWjOpbvZSgFnEY8SR1gwE2vQMdJEJv5DMNVPmnPw",
+      "price": 54.87,
+      "id": 8
     }
   ]
 }
