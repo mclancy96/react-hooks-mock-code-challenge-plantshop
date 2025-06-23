@@ -30,7 +30,7 @@ function PlantCard({ plant, setPlants }) {
   };
 
   const editPriceForm = (
-    <div>
+    <span>
       <input
         type="number"
         onChange={updateNewPrice}
@@ -38,14 +38,15 @@ function PlantCard({ plant, setPlants }) {
         step={0.01}
       />
       <button onClick={handleSubmit}>Save</button>
-    </div>
+    </span>
   );
   return (
     <li className="card">
       <img src={plant.image} alt={plant.name} />
       <h4>{plant.name}</h4>
       <div>
-        Price: {isEditing ? editPriceForm : <p>{plant.price.toFixed(2)}</p>}
+        Price:{" "}
+        {isEditing ? editPriceForm : <span>{plant.price.toFixed(2)}</span>}
       </div>
       <div>
         {inStock ? (
@@ -55,7 +56,9 @@ function PlantCard({ plant, setPlants }) {
         ) : (
           <button onClick={toggleInStock}>Out of Stock</button>
         )}
-        <button onClick={toggleEditing}>Edit Price</button>
+        <button onClick={toggleEditing}>
+          {isEditing ? "Cancel Edit" : "Edit Price"}
+        </button>
       </div>
     </li>
   );
