@@ -1,13 +1,6 @@
-function Search({ setPlants, getAllPlants }) {
+function Search({ filterPlants }) {
   const updateSearchResults = (e) => {
-    getAllPlants().then((allPlants) => {
-      const filteredPlants = allPlants.filter(
-        (plant) =>
-          plant.name.toLowerCase().includes(e.target.value) ||
-          e.target.value === "",
-      );
-      setPlants(filteredPlants);
-    });
+    filterPlants(e.target.value);
   };
   return (
     <div className="searchbar">

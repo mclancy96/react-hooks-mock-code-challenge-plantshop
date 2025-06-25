@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function NewPlantForm({ setPlants }) {
+function NewPlantForm({ addPlant }) {
   const defaultState = {
     name: "",
     image: "",
@@ -25,13 +25,8 @@ function NewPlantForm({ setPlants }) {
       plantData.image.length > 0 &&
       plantData.price >= 0
     ) {
-      fetch("http://localhost:6001/plants", {
-        method: "POST",
-        body: JSON.stringify(plantData),
-        headers: { "Content-Type": "application/json" },
-      })
-        .then((r) => r.json())
-        .then((data) => setPlants((currPlants) => [...currPlants, data]));
+      addPlant(plantData);
+      setPlantData(defaultState);
     } else {
       alert("Missing information!");
     }

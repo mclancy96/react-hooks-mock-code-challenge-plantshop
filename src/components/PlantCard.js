@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function PlantCard({ plant, setPlants }) {
+function PlantCard({ plant, updatePlant, deletePlant }) {
   const [inStock, setInStock] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [newPrice, setNewPrice] = useState(plant.price);
@@ -15,36 +15,12 @@ function PlantCard({ plant, setPlants }) {
   };
 
   const handleSubmit = () => {
-    fetch(`http://localhost:6001/plants/${plant.id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ price: parseFloat(newPrice) }),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((r) => r.json())
-      .then((updatedPlant) => {
-        setPlants((plants) =>
-          plants.map((p) => (p.id === plant.id ? updatedPlant : p)),
-        );
-        toggleEditing();
-      });
+    updatePlant(plant.id, { price: parseFloat(newPrice) });
+    toggleEditing();
   };
 
   const handleDelete = () => {
-    deleteFromDB();
-  };
-
-  const deleteFromState = () => {
-    setPlants((currPlants) =>
-      currPlants.filter((currPlant) => currPlant.id !== plant.id),
-    );
-  };
-
-  const deleteFromDB = () => {
-    fetch(`http://localhost:6001/plants/${plant.id}`, {
-      method: "DELETE",
-    })
-      .then((r) => r.json())
-      .then(deleteFromState());
+    deletePlant(plant.id);
   };
 
   const editPriceForm = (
